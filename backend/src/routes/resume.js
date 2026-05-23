@@ -10,6 +10,8 @@ import {
   downloadResumeQuerySchema,
 } from '../schemas/resume.schema.js';
 import { scrapeLinkedInProfile, profileToResumeText } from '../services/linkedinImporter.js';
+import { fetchGitHubProfile, convertGitHubToResumeText } from '../services/githubImporter.js';
+import { getDefaultProvider } from '../config/aiProviders.js';
 
 const router = express.Router();
 
@@ -160,7 +162,7 @@ router.put('/:resumeId', verifyToken, validate(updateResumeSchema), asyncHandler
   const userId = req.user.uid;
   const updates = req.body;
 
-  const allowedUpdates = ['originalText', 'enhancedText', 'jobRole', 'preferences', 'title', 'pdfUrl'];
+  const allowedUpdates = ['originalText', 'enhancedText', 'jobRole', 'atsScore', 'preferences', 'title', 'pdfUrl'];
   const updateData = {};
   for (const key of allowedUpdates) {
     if (updates[key] !== undefined) updateData[key] = updates[key];
@@ -331,6 +333,117 @@ router.get('/:resumeId/download', verifyToken, validate(downloadResumeQuerySchem
   } catch (error) {
     console.error('PDF generation error:', error);
     throw new ApiError(500, 'Failed to generate PDF');
+  }
+}));
+
+// Preview GitHub profile before importing
+router.post('/import/github/preview', verifyToken, asyncHandler(async (req, res) => {
+  const { username } = req.body;
+  if (!username || typeof username !== 'string') {
+    throw new ApiError(400, 'GitHub username is required');
+  }
+
+  const profileData = await fetchGitHubProfile(username.trim());
+  res.json({
+    success: true,
+    preview: profileData
+  });
+}));
+
+// Import GitHub profile as a resume
+router.post('/import/github', verifyToken, asyncHandler(async (req, res) => {
+  const { username, profile: cachedProfile } = req.body;
+  const userId = req.user.uid;
+
+  if (!username && !cachedProfile) {
+    throw new ApiError(400, 'GitHub username or profile data is required');
+  }
+
+  const profile = cachedProfile || await fetchGitHubProfile(username.trim());
+  const resumeText = convertGitHubToResumeText(profile);
+  const title = `${profile.name || username} GitHub Profile — Imported ${new Date().toLocaleDateString()}`;
+
+  const resume = await Resume.create({
+    userId,
+    originalText: resumeText,
+    jobRole: 'Software Developer',
+    preferences: { skills: profile.topLanguages || [] },
+    title,
+  });
+
+  res.status(201).json({
+    success: true,
+    data: {
+      id: resume._id.toString(),
+      userId: resume.userId,
+      originalText: resume.originalText,
+      enhancedText: resume.enhancedText,
+      jobRole: resume.jobRole,
+      preferences: resume.preferences,
+      title: resume.title,
+      pdfUrl: resume.pdfUrl,
+      createdAt: resume.createdAt,
+      lastModified: resume.lastModified,
+    },
+  });
+}));
+
+// Text to Resume Endpoint
+router.post('/from-text', verifyToken, asyncHandler(async (req, res) => {
+  const { text, jobRole } = req.body;
+  const userId = req.user.uid;
+
+  if (!text || !text.trim()) {
+    throw new ApiError(400, 'Raw text is required');
+  }
+
+  // Use AI to structure raw text into a standard resume format
+  const prompt = `You are an expert resume writer. Convert the following raw text into a professional, well-structured resume markdown format.
+  
+Target Role: ${jobRole || 'Professional'}
+
+Rules:
+1. Extract and organize information into standard sections: SUMMARY, EXPERIENCE, EDUCATION, SKILLS, PROJECTS
+2. If some sections are missing, leave them out or infer appropriately if obvious.
+3. Fix any grammar and spelling issues.
+4. Format using strict Markdown (headers with ##, bolding for titles, bullet points for lists).
+5. Output ONLY the markdown text, no preamble or explanation.
+
+Raw Text:
+${text}`;
+
+  try {
+    const provider = getDefaultProvider();
+    const result = await provider.generateContent(prompt);
+    
+    // Strip markdown fences
+    let structuredText = result.text.trim();
+    if (structuredText.startsWith('\`\`\`')) {
+      structuredText = structuredText.replace(/^\`\`\`(?:markdown)?\n?/, '').replace(/\n?\`\`\`$/, '').trim();
+    }
+    
+    const resume = await Resume.create({
+      userId,
+      originalText: structuredText,
+      jobRole: jobRole || null,
+      title: `Resume from Text — ${new Date().toLocaleDateString()}`
+    });
+
+    res.status(201).json({
+      success: true,
+      data: {
+        id: resume._id.toString(),
+        userId: resume.userId,
+        originalText: resume.originalText,
+        enhancedText: resume.enhancedText,
+        jobRole: resume.jobRole,
+        title: resume.title,
+        createdAt: resume.createdAt
+      }
+    });
+  } catch (error) {
+    console.error('Error generating resume from text:', error);
+    throw new ApiError(500, 'Failed to structure resume from text');
   }
 }));
 

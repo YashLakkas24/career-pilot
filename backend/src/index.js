@@ -48,7 +48,7 @@ const shouldInitGitHubSyncCron =
   process.env.NODE_ENV !== 'test';
 
 const connectDB = async (...args) => {
-  //await baseConnectDB(...args);
+  await baseConnectDB(...args);
 
   if (shouldInitGitHubSyncCron) {
     initGitHubSyncCron();
@@ -94,7 +94,7 @@ app.use(cors({
   },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'X-AI-Provider', 'X-AI-Key', 'X-AI-Model']
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'X-AI-Provider', 'X-AI-Key', 'X-AI-Model', 'X-OpenRouter-Key']
 }));
 
 // Helmet security headers - configured to not interfere with CORS
@@ -226,7 +226,7 @@ app.use((req, res) => {
 app.use(globalErrorHandler);
 const startServer = async () => {
   try {
-    //await connectDB();
+    await connectDB();
 
     httpServer.listen(PORT, () => {
       console.log(`🚀 Server running on port ${PORT}`);
