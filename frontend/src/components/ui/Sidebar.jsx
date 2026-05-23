@@ -148,11 +148,9 @@ export const SidebarLink = ({
             to={link.href}
             onClick={onClick}
             className={cn(
-                "flex items-center gap-3 group/sidebar py-3 rounded-xl transition-all duration-200",
+                "nav-link w-full group/sidebar transition-all duration-200",
                 !open && animate ? "justify-center px-0" : "justify-start px-3",
-                isActive
-                    ? "bg-primary/10 text-primary border border-primary/20"
-                    : "text-muted-foreground hover:text-foreground hover:bg-muted",
+                isActive ? "nav-link-active" : "nav-link-inactive",
                 className
             )}
             {...props}

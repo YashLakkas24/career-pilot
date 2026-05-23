@@ -180,8 +180,8 @@ function UserSection() {
             <button
                 onClick={toggleTheme}
                 className={cn(
-                    "flex items-center gap-3 w-full py-3 rounded-2xl text-muted-foreground hover:text-foreground hover:bg-muted transition-all cursor-pointer font-bold",
-                    !open && animate ? "px-0 justify-center" : "px-4 justify-start"
+                    "flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 w-full text-muted-foreground hover:text-foreground hover:bg-muted cursor-pointer",
+                    !open && animate ? "px-0 justify-center" : "justify-start"
                 )}
             >
                 {theme === 'dark' ? <Sun className="w-5 h-5 flex-shrink-0" /> : <Moon className="w-5 h-5 flex-shrink-0" />}
@@ -191,7 +191,7 @@ function UserSection() {
                         opacity: animate ? (open ? 1 : 0) : 1,
                     }}
                     transition={{ duration: 0.2 }}
-                    className="text-sm font-bold whitespace-pre"
+                    className="text-sm font-semibold whitespace-pre"
                 >
                     {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
                 </motion.span>
@@ -221,8 +221,8 @@ function UserSection() {
                     setOpen(false);
                 }}
                 className={cn(
-                    "flex items-center gap-3 w-full py-3 rounded-2xl text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-all cursor-pointer font-bold",
-                    !open && animate ? "px-0 justify-center" : "px-4 justify-start"
+                    "flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-semibold transition-all duration-300 w-full cursor-pointer hover:text-destructive hover:bg-destructive/10",
+                    !open && animate ? "px-0 justify-center" : "justify-start"
                 )}
             >
                 <LogOut className="w-5 h-5 flex-shrink-0" />
@@ -232,7 +232,7 @@ function UserSection() {
                         opacity: animate ? (open ? 1 : 0) : 1,
                     }}
                     transition={{ duration: 0.2 }}
-                    className="text-sm font-bold whitespace-pre"
+                    className="text-sm font-semibold whitespace-pre"
                 >
                     Logout
                 </motion.span>
