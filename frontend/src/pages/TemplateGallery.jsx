@@ -9,8 +9,9 @@ import CulinaryAbout from "../components/portfolio/templates/Culinary_Restaurant
 import TechStartupHero from "../components/portfolio/templates/Tech_Startup/Hero";
 import GeometricShapesAbout from "../components/portfolio/templates/Geometric_Shapes/About";
 import GeometricShapesHero from "../components/portfolio/templates/Geometric_Shapes/Hero";
+import LiquidGlass from "../components/portfolio/templates/Liquid_Glass/index";
 import Navbar from '../components/Navbar'
-import GeometricShapesAbout from "../components/portfolio/templates/Geometric_Shapes/About";
+
 
 function FilterSelect({ value, onChange, options, className = "" }) {
   const [open, setOpen] = useState(false);
@@ -415,17 +416,6 @@ export default function TemplateGallery() {
         </div>
       </div>
 
-      <div className="mt-12">
-        <div className="mb-4 flex items-center gap-3 px-1">
-          <span className="rounded-full bg-violet-500/20 px-3 py-1 text-xs font-bold uppercase tracking-widest text-violet-400 border border-violet-500/30">
-            Preview
-          </span>
-          <h2 className="text-lg font-semibold text-foreground/70">Choose Adventure Theme — Full Interactive Template</h2>
-        </div>
-        <div className="overflow-hidden rounded-2xl border border-border">
-          <ChooseAdventurePortfolio />
-        </div>
-      </div>
     </div>
   );
 }

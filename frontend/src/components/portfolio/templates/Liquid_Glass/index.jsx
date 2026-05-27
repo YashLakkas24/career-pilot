@@ -155,8 +155,8 @@ function About() {
               <div className="space-y-4">
                 {[
                   { label: "Email", value: data.socials.email, icon: <Mail size={14} /> },
-                  { label: "GitHub", value: "jordanmitchell", icon: <Github size={14} /> },
-                  { label: "Website", value: "jordanmitchell.dev", icon: <Globe size={14} /> },
+                  { label: "GitHub", value: data.socials.github, icon: <Github size={14} /> },
+                { label: "Website", value: data.socials.website, icon: <Globe size={14} /> },
                 ].map(({ label, value, icon }) => (
                   <div key={label} className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10">
                     <span className="text-cyan-400">{icon}</span>
@@ -245,8 +245,8 @@ function Projects() {
         </motion.div>
 
         <motion.div variants={stagger} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {data.projects.map((project) => (
-            <motion.div key={project.id} variants={fadeUp}>
+         {(data.projects || []).map((project, index) => (
+            <motion.div key={index} variants={fadeUp}>
               <GlassCard className="overflow-hidden h-full flex flex-col">
                 <div className="relative overflow-hidden">
                   <img
@@ -313,8 +313,8 @@ function Experience() {
           <div className="absolute left-4 top-0 bottom-0 w-px bg-white/10 hidden md:block" />
 
           <motion.div variants={stagger} className="space-y-6">
-            {data.experience.map((exp) => (
-              <motion.div key={exp.id} variants={fadeUp} className="md:pl-12 relative">
+           {(data.experience || []).map((exp, index) => (
+              <motion.div key={index} variants={fadeUp} className="md:pl-12 relative">
                 {/* Dot */}
                 <div className="absolute left-2.5 top-6 w-3 h-3 rounded-full bg-cyan-400 border-2 border-white/20 hidden md:block" />
                 <GlassCard className="p-6">
@@ -329,7 +329,7 @@ function Experience() {
                   </div>
                   <p className="text-white/60 text-sm leading-relaxed mb-3">{exp.description}</p>
                   <div className="flex flex-wrap gap-2">
-                    {exp.techStack.map((tech) => (
+                    {(exp.techStack || []).map((tech) => (
                       <span key={tech} className="px-2 py-0.5 rounded-md bg-cyan-500/10 border border-cyan-400/20 text-cyan-300 text-xs">
                         {tech}
                       </span>
@@ -363,8 +363,8 @@ function Testimonials() {
         </motion.div>
 
         <motion.div variants={stagger} className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {data.testimonials.map((t) => (
-            <motion.div key={t.id} variants={fadeUp}>
+         {(data.testimonials || []).map((t, index) => (
+            <motion.div key={index} variants={fadeUp}>
               <GlassCard className="p-6 h-full flex flex-col">
                 <div className="text-cyan-400 text-3xl mb-3">"</div>
                 <p className="text-white/70 text-sm leading-relaxed flex-1 mb-4">{t.text}</p>
