@@ -1,3 +1,12 @@
+## [1.46.1](https://github.com/anurag3407/career-pilot/compare/v1.46.0...v1.46.1) (2026-05-27)
+
+
+### Bug Fixes
+
+* add functional image and document attachments in post editor ([f20a2da](https://github.com/anurag3407/career-pilot/commit/f20a2dae86e52bcaef4bbfa617bcd1eb3f265ba9))
+* ensure posts appear instantly without duplicates ([c890a2d](https://github.com/anurag3407/career-pilot/commit/c890a2d94a46da2829a636c5d39a3bcc2014f58e))
+* make document attachments clickable ([89f531d](https://github.com/anurag3407/career-pilot/commit/89f531df89229bbd8919c034e811ed0d04dea831))
+
 # [1.46.0](https://github.com/anurag3407/career-pilot/compare/v1.45.0...v1.46.0) (2026-05-27)
 
 
