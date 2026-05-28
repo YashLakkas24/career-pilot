@@ -1,3 +1,10 @@
+# [1.52.0](https://github.com/anurag3407/career-pilot/compare/v1.51.1...v1.52.0) (2026-05-28)
+
+
+### Features
+
+* add Real Estate Luxury portfolio template ([#1963](https://github.com/anurag3407/career-pilot/issues/1963)) ([3084eea](https://github.com/anurag3407/career-pilot/commit/3084eea76e8c0c36ad6de710793bf884832ba21a))
+
 ## [1.51.1](https://github.com/anurag3407/career-pilot/compare/v1.51.0...v1.51.1) (2026-05-28)
 
 
