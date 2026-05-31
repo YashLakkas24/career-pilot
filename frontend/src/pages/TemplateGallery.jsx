@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Moon, Sun } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
+import Navbar from "../components/Navbar";
 import DeployModal from "../components/portfolio/DeployModal";
 import ThemeSelector from "../components/portfolio/ThemeSelector";
 import HolographicAbout from "../components/portfolio/templates/Holographic/About";
@@ -117,27 +116,11 @@ export default function TemplateGallery() {
   });
 
   return (
-    <div className="min-h-screen bg-background text-foreground p-8 pt-24 transition-colors duration-300">
-      <div className="flex justify-between items-center mb-8">
+    <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
+      <Navbar />
+      <div className="p-8 pt-24">
+      <div className="flex items-center mb-8">
         <h1 className="text-4xl font-bold">Template Gallery</h1>
-        {/* Theme Toggle */}
-        <button
-          onClick={toggleTheme}
-          className="p-2 rounded-xl bg-muted hover:bg-accent border border-border text-foreground transition-all cursor-pointer overflow-hidden relative group"
-          aria-label="Toggle theme"
-        >
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.div
-              key={theme}
-              initial={{ y: 20, opacity: 0, rotate: 45 }}
-              animate={{ y: 0, opacity: 1, rotate: 0 }}
-              exit={{ y: -20, opacity: 0, rotate: -45 }}
-              transition={{ duration: 0.2 }}
-            >
-              {theme === 'light' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
-            </motion.div>
-          </AnimatePresence>
-        </button>
       </div>
 
       <div className="mb-8 rounded-2xl border border-zinc-800 bg-zinc-950/70 p-5">
@@ -330,6 +313,7 @@ export default function TemplateGallery() {
       >
         <DesertDunes />
       </TemplatePreviewFrame>
+      </div>
     </div>
   );
 }
