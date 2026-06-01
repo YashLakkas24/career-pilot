@@ -1,3 +1,15 @@
+# [1.122.0](https://github.com/anurag3407/career-pilot/compare/v1.121.0...v1.122.0) (2026-06-01)
+
+
+### Bug Fixes
+
+* update author to Advik Divekar in templates.js ([5d248bd](https://github.com/anurag3407/career-pilot/commit/5d248bd5fbe658a1b56db73a987c8cf670ce7203))
+
+
+### Features
+
+* implement Sunset Warm portfolio template ([#1931](https://github.com/anurag3407/career-pilot/issues/1931)) ([b0b5442](https://github.com/anurag3407/career-pilot/commit/b0b54424a8eb69e6107114e7a23bce755e3182f0))
+
 # [1.121.0](https://github.com/anurag3407/career-pilot/compare/v1.120.0...v1.121.0) (2026-06-01)
 
 
