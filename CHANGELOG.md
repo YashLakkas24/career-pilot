@@ -1,3 +1,15 @@
+# [1.123.0](https://github.com/anurag3407/career-pilot/compare/v1.122.0...v1.123.0) (2026-06-01)
+
+
+### Bug Fixes
+
+* update author to Advik Divekar in templates.js ([134dd00](https://github.com/anurag3407/career-pilot/commit/134dd00306b32fc76ce5d27aa6ac4f54ce015209))
+
+
+### Features
+
+* implement Duotone Bold portfolio template ([#1933](https://github.com/anurag3407/career-pilot/issues/1933)) ([e740cf7](https://github.com/anurag3407/career-pilot/commit/e740cf7f359885943a0139d85db9f7f28cdc04a0))
+
 # [1.122.0](https://github.com/anurag3407/career-pilot/compare/v1.121.0...v1.122.0) (2026-06-01)
 
 
