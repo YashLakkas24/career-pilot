@@ -14,6 +14,7 @@ import PsychedelicSwirl from "../components/portfolio/templates/Psychedelic_Swir
 import DesertDunes from "../components/portfolio/templates/Desert_Dunes/index";
 import MemphisPop from "../components/portfolio/templates/Memphis_Pop/index";
 import CassetteMixtape from "../components/portfolio/templates/Cassette_Mixtape/index";
+import TypewriterEffect from "../components/portfolio/templates/Typewriter_Effect/index";
 import ChromaticGlitch from "../components/portfolio/templates/Chromatic_Glitch/index";
 import MagneticDock from "../components/portfolio/templates/Magnetic_Dock/index";
 import Navbar from '../components/Navbar'
@@ -23,7 +24,7 @@ import { useSearchParams } from "react-router-dom";
 // import ChooseAdventurePortfolio from "../components/portfolio/templates/Choose_Adventure/index";
 // import RetroProjects from "../components/portfolio/templates/2D_Retro_8bit/Projects";
 // import FantasyRPGProjects from "../components/portfolio/templates/Fantasy_RPG/Projects";
-import SmokeMist from "../components/portfolio/templates/Smoke_Mist/index";
+import MorphingBlobs from "../components/portfolio/templates/Morphing_Blobs/index";
 
 
 function FilterSelect({ value, onChange, options, className = "" }) {
@@ -205,13 +206,13 @@ function TemplateCard({ template, hovered, onHover, onLeave, onUse, aiDraft }) {
               className="flex gap-2 w-full mt-4"
             >
               <button
-                onClick={(e) => { e.stopPropagation(); onUse(template.title, false); }}
+                onClick={(e) => { e.stopPropagation(); onUse(template.title, false, template.id); }}
                 className="flex-1 bg-primary text-primary-foreground py-2.5 rounded-xl font-semibold text-sm cursor-pointer hover:scale-[1.02] active:scale-[0.98] transition-transform"
               >
                 Use Theme
               </button>
               <button
-                onClick={(e) => { e.stopPropagation(); onUse(template.id, true); }}
+                onClick={(e) => { e.stopPropagation(); onUse(template.id, true, template.id); }}
                 className="flex-1 bg-muted text-foreground border border-border py-2.5 rounded-xl font-semibold text-sm cursor-pointer hover:bg-accent hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
               >
                 <Eye className="w-4 h-4" /> Preview
@@ -294,12 +295,14 @@ const [hoveredCard, setHoveredCard] = useState(null);
   const [selectedTheme, setSelectedTheme] = useState("minimal");
   const [isDeployModalOpen, setIsDeployModalOpen] = useState(false);
   const [selectedPortfolioTitle, setSelectedPortfolioTitle] = useState("");
+  const [selectedTemplateId, setSelectedTemplateId] = useState("default");
 
-  const handleUseTemplate = (val, isPreview) => {
+  const handleUseTemplate = (val, isPreview, id = "default") => {
     if (isPreview) {
       setSearchParams({ preview: val });
     } else {
       setSelectedPortfolioTitle(val);
+      setSelectedTemplateId(id);
       setIsDeployModalOpen(true);
     }
   };
@@ -435,6 +438,7 @@ const [hoveredCard, setHoveredCard] = useState(null);
         isOpen={isDeployModalOpen}
         onClose={() => setIsDeployModalOpen(false)}
         portfolioTitle={selectedPortfolioTitle}
+        templateId={selectedTemplateId}
         aiDraft={aiDraft}
         onDeploySuccess={clearDraft}
       />
@@ -476,7 +480,8 @@ const [hoveredCard, setHoveredCard] = useState(null);
         </div>
         <div className="overflow-hidden rounded-2xl border border-border">
           <MidnightGradient />
-</div>
+        </div>
+      </div>
       {/* Playing Cards Theme */}
       <div className="mt-12">
         <div className="mb-4 flex items-center gap-3 px-1">
@@ -570,6 +575,16 @@ const [hoveredCard, setHoveredCard] = useState(null);
         </div>
       </div>
 
+      {/* Typewriter Effect — sandboxed fixed-nav frame */}
+      <div className="mt-12">
+        <div className="mb-4 flex items-center gap-3 px-1">
+          <span className="rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest border" style={{ background: "rgba(139,37,0,.1)", color: "#8B2500", borderColor: "rgba(139,37,0,.25)" }}>
+            ▮ Typewriter Effect
+          </span>
+          <h2 className="text-lg font-semibold text-foreground/70">Typewriter Effect — Vintage Paper Full Template</h2>
+        </div>
+        <div className="rounded-2xl" style={{ height: 640, overflowY: "auto", overflowX: "hidden", transform: "translate(0)", position: "relative", border: "1px solid rgba(139,37,0,.2)" }}>
+          <TypewriterEffect />
       {/* Chromatic Glitch — sandboxed fixed-nav frame */}
       <div className="mt-12">
         <div className="mb-4 flex items-center gap-3 px-1">
@@ -581,6 +596,8 @@ const [hoveredCard, setHoveredCard] = useState(null);
         <div className="rounded-2xl border border-cyan-500/20"
           style={{ height: 640, overflowY: "auto", overflowX: "hidden", transform: "translate(0)", position: "relative" }}>
           <ChromaticGlitch />
+        </div>
+      </div>
       {/* Magnetic Dock — sandboxed fixed-nav frame */}
       <div className="mt-12">
         <div className="mb-4 flex items-center gap-3 px-1">
@@ -594,8 +611,6 @@ const [hoveredCard, setHoveredCard] = useState(null);
           <MagneticDock />
         </div>
       </div>
-
-    </div>
 
     </div>
   );

@@ -1272,12 +1272,13 @@ export const templates = [
     "title": "Morphing Blobs",
     "category": "Portfolio",
     "colorScheme": "Dark",
-    "layout": "Grid",
-    "author": "System",
-    "views": 1105,
-    "rating": 4.5,
+    "layout": "Interactive",
+    "author": "Advik Divekar",
+    "views": 2700,
+    "rating": 4.9,
     "image": "/template-previews/Morphing_Blobs.png",
-    "createdAt": "2026-05-01"
+    "createdAt": "2026-05-31",
+    "isComplete": true
   },
   {
     "id": "Mosaic_Assemble",
@@ -1487,13 +1488,14 @@ export const templates = [
     "id": "One_Page_Scroll",
     "title": "One Page Scroll",
     "category": "Portfolio",
-    "colorScheme": "Dark",
-    "layout": "Grid",
-    "author": "System",
-    "views": 1123,
-    "rating": 4.5,
+    "colorScheme": "Light",
+    "layout": "Minimal",
+    "author": "Advik Divekar",
+    "views": 2600,
+    "rating": 4.9,
     "image": "/template-previews/One_Page_Scroll.png",
-    "createdAt": "2026-05-01"
+    "createdAt": "2026-05-31",
+    "isComplete": true
   },
   {
     "id": "Origami_Paper",
@@ -2179,12 +2181,13 @@ export const templates = [
     "title": "Twilight Horizon",
     "category": "Portfolio",
     "colorScheme": "Dark",
-    "layout": "Grid",
-    "author": "System",
-    "views": 1180,
-    "rating": 4.5,
+    "layout": "Interactive",
+    "author": "Advik Divekar",
+    "views": 2750,
+    "rating": 4.9,
     "image": "/template-previews/Twilight_Horizon.png",
-    "createdAt": "2026-05-01"
+    "createdAt": "2026-05-31",
+    "isComplete": true
   },
   {
     "id": "Twitter_Profile",
@@ -2215,13 +2218,14 @@ export const templates = [
     "id": "Typewriter_Effect",
     "title": "Typewriter Effect",
     "category": "Portfolio",
-    "colorScheme": "Dark",
-    "layout": "Grid",
-    "author": "System",
-    "views": 1183,
-    "rating": 4.5,
+    "colorScheme": "Light",
+    "layout": "Interactive",
+    "author": "Advik Divekar",
+    "views": 2850,
+    "rating": 4.9,
     "image": "/template-previews/Typewriter_Effect.png",
-    "createdAt": "2026-05-01"
+    "createdAt": "2026-05-31",
+    "isComplete": true
   },
   {
     "id": "Typographic_Heavy",
