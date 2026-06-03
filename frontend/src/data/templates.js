@@ -982,13 +982,12 @@ export const templates = [
     "title": "High Fashion",
     "category": "Portfolio",
     "colorScheme": "Dark",
-    "layout": "Editorial",
-    "author": "Advik Divekar",
+    "layout": "Grid",
+    "author": "System",
     "views": 1081,
-    "rating": 4.8,
+    "rating": 4.5,
     "image": "/template-previews/High_Fashion.png",
-    "createdAt": "2026-06-03",
-    "isComplete": true
+    "createdAt": "2026-05-01"
   },
   {
     "id": "Holographic",
