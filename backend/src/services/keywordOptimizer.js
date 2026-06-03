@@ -43,12 +43,23 @@ function deterministicKeywordAnalysis(resumeText, jobRole = '') {
 
   const lowerText = resumeText.toLowerCase();
 
+  const containsKeyword = (text, keyword) => {
+    const escaped = keyword.replace(
+      /[.*+?^${}()|[\]\\]/g,
+      '\\$&'
+    );
+
+    const pattern = new RegExp(`\\b${escaped}\\b`, 'i');
+
+    return pattern.test(text);
+  };
+
   const foundKeywords = keywords.filter(keyword =>
-    lowerText.includes(keyword.toLowerCase())
+    containsKeyword(lowerText, keyword)
   );
 
   const missingKeywords = keywords.filter(keyword =>
-    !lowerText.includes(keyword.toLowerCase())
+    !containsKeyword(lowerText, keyword)
   );
 
   return {
