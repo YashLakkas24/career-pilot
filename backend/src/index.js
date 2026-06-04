@@ -69,6 +69,7 @@ import {
   initializeDigestQueue,
   startDigestWorker
 } from './services/weeklyDigestService.js';
+import { getSafeConfig } from './utils/safeConfig.js';
 
 // ============================================================================
 // Configuration validation - Check for required API keys
@@ -91,8 +92,16 @@ app.use(metricsMiddleware);
 const httpServer = createServer(app);
 const PORT = process.env.PORT || 5001;
 
-// Log FRONTEND_URL for debugging
-console.log('🔧 FRONTEND_URL env var:', process.env.FRONTEND_URL);
+// Log a presence-only configuration summary. Raw values are never printed so
+// secrets cannot leak into startup logs or aggregated log output.
+console.log('🔧 Config summary:', getSafeConfig(process.env, [
+  'NODE_ENV',
+  'FRONTEND_URL',
+  'EMAIL_SERVICE_URL',
+  'GEMINI_API_KEY',
+  'GROQ_API_KEY',
+  'OPENAI_API_KEY',
+]));
 
 // CORS configuration - MUST come before helmet
 const allowedOrigins = [
