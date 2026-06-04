@@ -1,3 +1,10 @@
+# [1.147.0](https://github.com/anurag3407/career-pilot/compare/v1.146.0...v1.147.0) (2026-06-04)
+
+
+### Features
+
+* add CSRF protection middleware ([18494b1](https://github.com/anurag3407/career-pilot/commit/18494b1197878023f9fba3a7550f6b251f0d7137)), closes [#2762](https://github.com/anurag3407/career-pilot/issues/2762)
+
 # [1.146.0](https://github.com/anurag3407/career-pilot/compare/v1.145.2...v1.146.0) (2026-06-04)
 
 
