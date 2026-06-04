@@ -1,3 +1,16 @@
+# [1.145.0](https://github.com/anurag3407/career-pilot/compare/v1.144.0...v1.145.0) (2026-06-04)
+
+
+### Bug Fixes
+
+* **ai-engine:** handle symbol-based keywords correctly ([9689adb](https://github.com/anurag3407/career-pilot/commit/9689adb425dac3c45f78e46db94aa8e9d279d25a))
+* **ai-engine:** improve keyword matching accuracy ([3520595](https://github.com/anurag3407/career-pilot/commit/352059547574f9ae165dc0096feff66c7579319a))
+
+
+### Features
+
+* **ai-engine:** implement AI-powered resume keyword optimizer ([6bc29ac](https://github.com/anurag3407/career-pilot/commit/6bc29acbbf3369449e0f31080c0dfdcf482a25cc))
+
 # [1.144.0](https://github.com/anurag3407/career-pilot/compare/v1.143.0...v1.144.0) (2026-06-04)
 
 
