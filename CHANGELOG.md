@@ -1,3 +1,11 @@
+# [1.160.0](https://github.com/anurag3407/career-pilot/compare/v1.159.0...v1.160.0) (2026-06-05)
+
+
+### Features
+
+* implement geometric tunnel portfolio template ([187bbcf](https://github.com/anurag3407/career-pilot/commit/187bbcf5706501861175702c5fdc800a53ac9d3a))
+* **portfolio:** implement optimized Lava Lamp template ([b9c948b](https://github.com/anurag3407/career-pilot/commit/b9c948b986b485ebf639b409cd570d136bdba7c3))
+
 # [1.159.0](https://github.com/anurag3407/career-pilot/compare/v1.158.0...v1.159.0) (2026-06-05)
 
 
