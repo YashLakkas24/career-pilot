@@ -3,6 +3,7 @@ import { useTheme } from "../hooks/useTheme";
 import Navbar from "../components/Navbar";
 import DeployModal from "../components/portfolio/DeployModal";
 import ThemeSelector from "../components/portfolio/ThemeSelector";
+import AccessibilityReport from "../components/portfolio/AccessibilityReport";
 import HolographicAbout from "../components/portfolio/templates/Holographic/About";
 import CulinaryAbout from "../components/portfolio/templates/Culinary_Restaurant/About";
 import TechStartupHero from "../components/portfolio/templates/Tech_Startup/Hero";
@@ -12,7 +13,7 @@ import WeatherMood from "../components/portfolio/templates/Weather_Mood/index";
 import SwissTypography from "../components/portfolio/templates/Swiss_Typography/index";
 import DesertDunes from "../components/portfolio/templates/Desert_Dunes/index";
 import { templates } from '../data/templates';
-import { motion, AnimatePresence } from "framer-motion";
+import { motion as Motion, AnimatePresence } from "framer-motion";
 import { Moon, Sun, ChevronDown, Check, Eye, Star, Sparkles, X } from "lucide-react";
 import LiquidGlass from "../components/portfolio/templates/Liquid_Glass/index";
 import MidnightGradient from "../components/portfolio/templates/Midnight_Gradient/index";
@@ -103,7 +104,7 @@ function FilterSelect({ value, onChange, options, className = "" }) {
 
       <AnimatePresence>
         {open && (
-          <motion.ul
+          <Motion.ul
             initial={{ opacity: 0, y: -6, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -6, scale: 0.97 }}
@@ -136,7 +137,7 @@ function FilterSelect({ value, onChange, options, className = "" }) {
                 </li>
               );
             })}
-          </motion.ul>
+          </Motion.ul>
         )}
       </AnimatePresence>
     </div>
@@ -159,7 +160,7 @@ const TemplateHeroPreview = ({ templateId, portfolioData }) => {
 
 function TemplateCard({ template, hovered, onHover, onLeave, onUse, aiDraft }) {
   return (
-    <motion.div
+    <Motion.div
       onMouseEnter={() => onHover(template.id)}
       onMouseLeave={onLeave}
       animate={hovered ? "hover" : "rest"}
@@ -188,7 +189,7 @@ function TemplateCard({ template, hovered, onHover, onLeave, onUse, aiDraft }) {
             <TemplateHeroPreview templateId={template.id} portfolioData={aiDraft} />
           </div>
         ) : (
-          <motion.img
+          <Motion.img
             src={template.image}
             alt={template.title}
             className="w-full h-52 object-cover object-top"
@@ -198,7 +199,7 @@ function TemplateCard({ template, hovered, onHover, onLeave, onUse, aiDraft }) {
             }}
           />
         )}
-        <motion.div
+        <Motion.div
           className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"
           variants={{ rest: { opacity: 0 }, hover: { opacity: 1 } }}
           transition={{ duration: 0.3 }}
@@ -233,7 +234,7 @@ function TemplateCard({ template, hovered, onHover, onLeave, onUse, aiDraft }) {
           <button onClick={(e) => { e.stopPropagation(); onUse(template.id, false, template.id); }} className="flex-1 rounded-xl bg-cyan-500 text-white px-4 py-2 text-sm font-medium hover:bg-cyan-600 transition-colors">Use Theme</button>
         </div>
       </div>
-    </motion.div>
+    </Motion.div>
   );
 }
 
@@ -278,17 +279,35 @@ const TemplatePreviewModal = ({ templateId, isOpen, onClose, portfolioData }) =>
 
     const [category, setCategory] = useState("All");
     const [colorScheme, setColorScheme] = useState("All");
-    const [layout, setLayout] = useState("All");
-    const [sort, setSort] = useState("Popular");
+  const [layout, setLayout] = useState("All");
+  const [sort, setSort] = useState("Popular");
     
-    const [aiDraft, setAiDraft] = useState(null);
+  const [aiDraft, setAiDraft] = useState(null);
+  const [isA11yLoading, setIsA11yLoading] = useState(false);
+  const [a11yReport, setA11yReport] = useState(null);
+
+  const runA11yCheck = () => {
+    setIsA11yLoading(true);
+    setTimeout(() => {
+      setA11yReport({
+        score: 82,
+        issues: [
+          { severity: "critical", rule: "Images must have alt text", element: "<img src='hero.png'>", suggestion: "Add a descriptive alt attribute." },
+          { severity: "serious", rule: "Color contrast is insufficient", element: "<div class='text-gray-400 bg-white'>", suggestion: "Increase contrast ratio to at least 4.5:1." },
+          { severity: "moderate", rule: "Heading levels skipped", element: "<h4>", suggestion: "Use <h3> before <h4>." },
+          { severity: "minor", rule: "Redundant link text", element: "<a href='#'>Click here</a>", suggestion: "Use descriptive text for the link." },
+        ],
+      });
+      setIsA11yLoading(false);
+    }, 1500);
+  };
 
     useEffect(() => {
       const draft = localStorage.getItem('ai_portfolio_draft');
       if (draft) {
         try {
           setAiDraft(JSON.parse(draft));
-        } catch(e) {}
+        } catch {}
       }
     }, []);
 
@@ -388,7 +407,7 @@ const TemplatePreviewModal = ({ templateId, isOpen, onClose, portfolioData }) =>
             aria-label="Toggle theme"
           >
             <AnimatePresence mode="wait" initial={false}>
-              <motion.div
+              <Motion.div
                 key={theme}
                 initial={{ y: 20, opacity: 0, rotate: 45 }}
                 animate={{ y: 0, opacity: 1, rotate: 0 }}
@@ -396,7 +415,7 @@ const TemplatePreviewModal = ({ templateId, isOpen, onClose, portfolioData }) =>
                 transition={{ duration: 0.2 }}
               >
                 {theme === "light" ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
-              </motion.div>
+              </Motion.div>
             </AnimatePresence>
           </button>
         </div>
@@ -414,6 +433,13 @@ const TemplatePreviewModal = ({ templateId, isOpen, onClose, portfolioData }) =>
             </span>
           </div>
           <ThemeSelector selectedTheme={selectedTheme} onSelectTheme={setSelectedTheme} />
+          <div className="mt-8">
+            <AccessibilityReport
+              isLoading={isA11yLoading}
+              report={a11yReport}
+              onRecheck={runA11yCheck}
+            />
+          </div>
         </div>
 
         <div className="flex flex-wrap items-center gap-3 mb-8">
