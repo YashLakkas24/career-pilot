@@ -2398,5 +2398,17 @@ export const templates = [
     "rating": 4.5,
     "image": "/template-previews/Zoom_Into_Work.png",
     "createdAt": "2026-05-01"
+  },
+  {
+    "id": "Underground_Bunker_Console",
+    "title": "Underground Bunker Console",
+    "category": "Portfolio",
+    "colorScheme": "Dark",
+    "layout": "Interactive",
+    "author": "System",
+    "views": 0,
+    "rating": 4.5,
+    "image": "/template-previews/Underground_Bunker_Console.svg",
+    "createdAt": "2026-06-06"
   }
 ];
