@@ -1067,6 +1067,18 @@ export const templates = [
     "createdAt": "2026-05-01"
   },
   {
+    "id": "Error_404_Infinite_Gallery",
+    "title": "Error 404 Infinite Gallery",
+    "category": "Portfolio",
+    "colorScheme": "Dark",
+    "layout": "Interactive",
+    "author": "System",
+    "views": 1086,
+    "rating": 4.5,
+    "image": "/templates/Error_404_Infinite_Gallery.png",
+    "createdAt": "2026-06-06"
+  },
+  {
     "id": "Japanese_Zen",
     "title": "Japanese Zen",
     "category": "Portfolio",
