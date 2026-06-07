@@ -1,3 +1,10 @@
+# [1.182.0](https://github.com/anurag3407/career-pilot/compare/v1.181.0...v1.182.0) (2026-06-07)
+
+
+### Features
+
+* Underground Bunker Console portfolio template for [#3279](https://github.com/anurag3407/career-pilot/issues/3279) ([5c6360b](https://github.com/anurag3407/career-pilot/commit/5c6360b8891552ae4380cfd0e9552cce1bc1e2f1))
+
 # [1.181.0](https://github.com/anurag3407/career-pilot/compare/v1.180.0...v1.181.0) (2026-06-07)
 
 
