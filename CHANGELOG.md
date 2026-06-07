@@ -1,3 +1,33 @@
+# [1.178.0](https://github.com/anurag3407/career-pilot/compare/v1.177.0...v1.178.0) (2026-06-06)
+
+
+### Features
+
+* add resume content readability analyzer ([f786f2b](https://github.com/anurag3407/career-pilot/commit/f786f2be9dd62f72f53dbdd2c35f8a5d53b201f6))
+
+# [1.177.0](https://github.com/anurag3407/career-pilot/compare/v1.176.0...v1.177.0) (2026-06-06)
+
+
+### Features
+
+* add personalized portfolio theme recommendation engine ([0dca938](https://github.com/anurag3407/career-pilot/commit/0dca9384a8a9be06ab1767ac8f5fa07d8b257fac))
+
+# [1.176.0](https://github.com/anurag3407/career-pilot/compare/v1.175.0...v1.176.0) (2026-06-06)
+
+
+### Features
+
+* **terminal-cli:** Create Terminal CLI Theme: ResumeCTA Section ([aec8a97](https://github.com/anurag3407/career-pilot/commit/aec8a97c4fb04358d5a50005d6f9ffdf639896a0))
+
+# [1.175.0](https://github.com/anurag3407/career-pilot/compare/v1.174.0...v1.175.0) (2026-06-06)
+
+
+### Features
+
+* add AI resume score breakdown dashboard ([0446570](https://github.com/anurag3407/career-pilot/commit/0446570b566ea1a6620e596dacf57bc96a7c36ff))
+* add real-time ATS keyword optimization assistant ([a364fca](https://github.com/anurag3407/career-pilot/commit/a364fca35a9bb3a469ada9a53c73aca6dd15fe89))
+* add resume version history and restore system ([8fb5bf4](https://github.com/anurag3407/career-pilot/commit/8fb5bf43df4c26e180e1ca799cff577c16b03514))
+
 # [1.174.0](https://github.com/anurag3407/career-pilot/compare/v1.173.0...v1.174.0) (2026-06-06)
 
 
