@@ -1,3 +1,22 @@
+# [1.183.0](https://github.com/anurag3407/career-pilot/compare/v1.182.0...v1.183.0) (2026-06-07)
+
+
+### Bug Fixes
+
+* discard invalid offline status updates ([b84dc1b](https://github.com/anurag3407/career-pilot/commit/b84dc1b72b98327d52aa0b5450b06f7972a21009))
+* make Job Tracker offline sync resilient ([dd2fc33](https://github.com/anurag3407/career-pilot/commit/dd2fc33f84daf357114a143c4780989f6cc28c7e))
+* match doctor projects import casing ([374b07a](https://github.com/anurag3407/career-pilot/commit/374b07aae4ead350c9df66cebab996f7e49e8ec4))
+* match zoom template shared import casing ([10f2114](https://github.com/anurag3407/career-pilot/commit/10f2114cf79c7ff25d48af4531d64b6914bd61df))
+* preserve offline tracker updates during sync ([0b161ba](https://github.com/anurag3407/career-pilot/commit/0b161bad4720e3a3619fe967c773cdc2ddf602cf))
+* restore frontend ci after upstream sync ([ca62225](https://github.com/anurag3407/career-pilot/commit/ca622254246bbc7ba7a4ee644a0aa2d15575db8d))
+* retain retryable offline status updates ([9e3e41c](https://github.com/anurag3407/career-pilot/commit/9e3e41c65d49309e58beffe3aaa16523dc578c33))
+* tighten Job Tracker offline cache handling ([1f99ce7](https://github.com/anurag3407/career-pilot/commit/1f99ce7d97ddf8d556f92c11eebceef3e3196080))
+
+
+### Features
+
+* add offline support for job tracker ([#32](https://github.com/anurag3407/career-pilot/issues/32)) ([8d39463](https://github.com/anurag3407/career-pilot/commit/8d39463c64c905fb7f24a18b5d40bb0effaacbe9))
+
 # [1.182.0](https://github.com/anurag3407/career-pilot/compare/v1.181.0...v1.182.0) (2026-06-07)
 
 
