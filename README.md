@@ -147,7 +147,7 @@ career-pilot/
 - Backend bug fixes around authentication and job search.
 - Code quality and linting improvements.
 
-If you are part of GSoC or a first-time contributor, add a comment to an issue or open a discussion to request mentorship.
+If you are part of GSSoC or a first-time contributor, add a comment to an issue or open a discussion to request mentorship.
 
 ## Contributing
 
